@@ -7,10 +7,19 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
 class App extends Component {
+
+  state = {
+    zipcode: 85210
+  }
+
   componentDidMount() {
-    API.axiosGet(Instance.marketCheckSearch, `latitude=39.73&longitude=-104.99&radius=200&car_type=used&start=0&rows=10&sort_by=dist&sort_order=desc`, res => {
-      console.log(res);
-    })
+    API.axiosGet(Instance.baseAPI, `/cars/locations/${this.state.zipcode}`, (req,res) => {
+
+      console.log(
+      `Frontend response: 
+      ${res}`)
+
+    });
   }
 
   render() {

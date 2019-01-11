@@ -1,5 +1,5 @@
 //API to be used with the axios call functions.
-const API = {
+export default {
     axiosGet: (instance, query, callbackFunction) => {
         instance.get(query).then(res => {
             callbackFunction(res.data);
@@ -14,9 +14,6 @@ const API = {
         });
     }
 }
-
-// Exports the API for other files to use
-export default API;
 
 //In this case of my code a basic API get call will be added like so: 
 // 

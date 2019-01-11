@@ -8,9 +8,9 @@ const AUTH_TOKEN = {
 
 //Can add other axios.create Intances here to save code in long run
 //headers might change slightly based om the API used
-const instance = {
+export default {
     marketCheckSearch: axios.create({
-        baseURL: `http://api.marketcheck.com/search?api_key=${AUTH_TOKEN.marketCheck}&`,
+        baseURL: `http://api.marketcheck.com/v1/search?api_key=${AUTH_TOKEN.marketCheck}&`,
         headers: {
             'Accept': 'aplication/json',
             'Content-Type': 'aplication/json',
@@ -18,6 +18,3 @@ const instance = {
         },
     })
 }
-
-//Exports instance to be used by other files
-export default instance;
