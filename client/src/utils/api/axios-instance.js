@@ -10,11 +10,11 @@ const AUTH_TOKEN = {
 //headers might change slightly based om the API used
 const instance = {
     marketCheckSearch: axios.create({
-        baseURL: `http://api.marketcheck.com/search?api_key=${AUTH_TOKEN.marketCheck}&`,
+        baseURL: `http://api.marketcheck.com/v1/search?api_key=${AUTH_TOKEN.marketCheck}&`,
         headers: {
             'Accept': 'aplication/json',
             'Content-Type': 'aplication/json',
-            'Host': 'marketcheck-prod.apigee.net'
+            'Host': 'marketcheck-test.apigee.net',
         },
     })
 }
