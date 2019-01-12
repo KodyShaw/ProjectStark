@@ -1,3 +1,8 @@
 .footer{
 margin-top: 200px;
 }
+.link{
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}

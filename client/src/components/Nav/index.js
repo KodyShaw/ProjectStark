@@ -45,10 +45,7 @@ class NavbarPage extends React.Component {
             </NavbarNav>
             <NavbarNav right>
               <NavItem>
-                <NavLink className="waves-effect waves-light" to="#!"><Fa icon="twitter" /></NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className="waves-effect waves-light" to="#!"><Fa icon="google-plus" /></NavLink>
+                <NavLink className="waves-effect waves-light" to="#!"><Fa icon="github" /></NavLink>
               </NavItem>
               <NavItem>
                 <Dropdown>
