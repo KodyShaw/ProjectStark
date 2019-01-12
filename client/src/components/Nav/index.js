@@ -11,7 +11,7 @@ class NavbarPage extends React.Component {
   render() {
     return (
         <div className="position-relative">
-      <Navbar color="default-color" dark expand="md" style={{marginTop: "20px"}}>
+      <Navbar color="default-color" dark expand="md" style={{marginTop: "0px"}}>
           <NavbarBrand>
             <strong className="white-text">Cars N Such</strong>
           </NavbarBrand>

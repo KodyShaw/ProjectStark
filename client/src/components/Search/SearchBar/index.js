@@ -1,29 +1,31 @@
 import React from "react";
-import { Col, Fa } from "mdbreact";
+import { Col, FormInline, Button } from "mdbreact";
 import "./style.css";
-
 
 class SearchPage extends React.Component {
   render() {
     return (
-    
-    <Col md="6">
-   
-        <div className="input-group md-form form-sm form-1 pl-0">
-          <div className="input-group-prepend">
-            <span className="input-group-text purple lighten-3" id="basic-text1" >
-              <Fa className="text-white" icon="search"  />
-            </span>
-          </div>
+        <div className="searchBar">
+      <Col md="12">
+        <FormInline className="md-form mr-auto mb-4">
           <input
-            className="form-control my-0 py-1"
+            className="form-control mr-sm-2"
             type="text"
             placeholder="Search"
             aria-label="Search"
           />
-        </div>
-     
+          <Button
+            gradient="aqua"
+            rounded
+            size="sm"
+            type="submit"
+            className="mr-auto"
+          >
+            Search
+          </Button>
+        </FormInline>
       </Col>
+      </div>
     );
   }
 }
