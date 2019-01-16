@@ -1,4 +1,4 @@
-import axios from "axios";
+axios = require("axios")
 
 //Object that can hold all the various API tokens and auth KEYS in one place
 //We will later replace these with envirmoent vars apon deployment in heroku
@@ -8,13 +8,15 @@ const AUTH_TOKEN = {
 
 //Can add other axios.create Intances here to save code in long run
 //headers might change slightly based om the API used
-export default {
+const Instance = {
     marketCheckSearch: axios.create({
-        baseURL: `http://api.marketcheck.com/v1/search?api_key=${AUTH_TOKEN.marketCheck}&`,
+        baseURL: `http://api.marketcheck.com/v1/search?api_key=${AUTH_TOKEN.marketCheck}`,
         headers: {
-            'Accept': 'aplication/json',
-            'Content-Type': 'aplication/json',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
             'Host': 'marketcheck-prod.apigee.net'
         },
     })
 }
+
+module.exports = Instance;

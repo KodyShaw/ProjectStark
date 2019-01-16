@@ -1,18 +1,6 @@
-const path = require("path");
 const router = require("express").Router();
-const apiRoutes = require("./api");
+const carsRoutes = require("./cars");
 
-// API Routes
-router.use("/api/v1", apiRoutes);
-
-// If no API routes are hit, send the React app
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
+router.use('/cars', carsRoutes);
 
 module.exports = router;
-
-
-//You can create new routes to our own API here. 
-//Look at last weeks react class asignments for examples. 

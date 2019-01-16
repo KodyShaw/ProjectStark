@@ -4,6 +4,10 @@ import axios from "axios";
 //headers might change slightly based om the API used
 export default {
     baseAPI: axios.create({
-        baseURL: `${__dirname}/api`,
+        baseURL: `/api/v1`,
+        headers: {
+            'Accept': 'aplication/json',
+            'Content-Type': 'aplication/json',
+        }
     })
 }

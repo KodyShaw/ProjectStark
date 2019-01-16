@@ -1,6 +1,6 @@
 const router = require("express").Router();
-import API from './utils/axios-api';
-import Instance from './utils/axios-instance';
+const API = require('../utils/axios-api');
+const Instance = require('../utils/axios-instance');
 
 router.route('/:id')
     .get(

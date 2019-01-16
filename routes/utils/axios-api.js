@@ -1,20 +1,22 @@
+
 //API to be used with the axios call functions.
-export default {
+const API = {
     axiosGet: (instance, query, callbackFunction) => {
         instance.get(query).then(res => {
-            callbackFunction(res.data);
+            callbackFunction(res);
         }).catch(err => {
-            console.log("API Call Error");
+            console.log("Back-end API Call Error");
             if (!err.response) {
                 console.log(err);
             } else {
                 console.log(`Status code: ${err.response.status}`);
-                console.log(`API Message: ${err.response.data.message}`);
+                console.log(`API Message: ${err.response.message}`);
             }
         });
     }
 }
 
+module.exports = API;
 
 //In this case of my code a basic API get call will be added like so: 
 // 

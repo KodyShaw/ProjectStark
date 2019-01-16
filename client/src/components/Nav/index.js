@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Dropdown, DropdownToggle, DropdownMenu,  DropdownItem, Fa } from "mdbreact";
 
-class NavbarPage extends React.Component {
+class Nav extends React.Component {
   state = {
     isOpen: false
   };
@@ -69,4 +69,4 @@ class NavbarPage extends React.Component {
   }
 }
 
-export default NavbarPage;
+export default Nav;
