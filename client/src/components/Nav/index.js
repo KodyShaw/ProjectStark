@@ -10,9 +10,10 @@ class NavbarPage extends React.Component {
 
   render() {
     return (
-      <Navbar color="default-color" dark expand="md" style={{marginTop: "20px"}}>
+        <div className="position-relative">
+      <Navbar color="default-color" dark expand="md" style={{marginTop: "0px"}}>
           <NavbarBrand>
-            <strong className="white-text">Navbar</strong>
+            <strong className="white-text">Cars N Such</strong>
           </NavbarBrand>
           <NavbarToggler
             onClick={this.toggleCollapse}
@@ -44,10 +45,7 @@ class NavbarPage extends React.Component {
             </NavbarNav>
             <NavbarNav right>
               <NavItem>
-                <NavLink className="waves-effect waves-light" to="#!"><Fa icon="twitter" /></NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink className="waves-effect waves-light" to="#!"><Fa icon="google-plus" /></NavLink>
+                <NavLink className="waves-effect waves-light" to="#!"><Fa icon="github" /></NavLink>
               </NavItem>
               <NavItem>
                 <Dropdown>
@@ -65,6 +63,7 @@ class NavbarPage extends React.Component {
             </NavbarNav>
           </Collapse>
       </Navbar>
+      </div>
     );
   }
 }
