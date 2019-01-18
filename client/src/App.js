@@ -21,7 +21,7 @@ class App extends Component {
   componentDidMount() {
     this.setLocation();
     this.latLong();
-    // this.zipcode()
+    // this.zipcode();
     
   }
 
@@ -39,9 +39,7 @@ class App extends Component {
   latLong() {
     API.axiosGet(Instance.baseAPI, `/cars/locations?lat=${this.state.lat}&long=${this.state.long}`, (res) => {
 
-      console.log(
-        `Frontend response:`)
-
+      console.log(`Frontend response:`)
       console.log(res);
     })
   }
