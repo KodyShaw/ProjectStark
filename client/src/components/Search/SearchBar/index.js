@@ -10,8 +10,8 @@ class SearchPage extends React.Component {
     super(props);
     
     this.state = {
-      lat: this.props.lat,
-      long: this.props.long
+      lat: props.lat,
+      long: props.long
     }
     
     console.log(props);
@@ -19,10 +19,10 @@ class SearchPage extends React.Component {
 
   componentDidMount() {
 
-    this.setState((props) => ({
-      lat: props.lat,
-      long: props.long
-    }));
+    // this.setState((props) => ({
+    //   lat: props.lat,
+    //   long: props.long
+    // }));
     
     // this.setState((props) => ({
     //   lat: props.lat,
