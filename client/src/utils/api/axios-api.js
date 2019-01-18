@@ -4,12 +4,13 @@ const API = {
         instance.get(query).then(res => {
             callbackFunction(res.data);
         }).catch(err => {
-            console.log("API Call Error");
+            console.log("Front-end API Call Error");
             if (!err.response) {
-                console.log(err);
+                console.log({ err });
             } else {
-                console.log(`Status code: ${err.response.status}`);
-                console.log(`API Message: ${err.response.data.message}`);
+                console.log(`Status code: ${err.response.status}`)
+                console.log(`API Message: ${err.message}`);
+                console.log({err})
             }
         });
     }
