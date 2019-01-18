@@ -1,18 +1,14 @@
 import React from "react";
-import { MDBJumbotron, MDBContainer } from "mdbreact";
-import "./style.css"
 
-const JumbotronPage = () => {
+function Jumbotron({ children }) {
   return (
-      <div className="jumboTron">
-    <MDBJumbotron fluid>
-      <MDBContainer>
-        <h2 className="display-4">Welcome!</h2>
-        <p className="lead">Lets start with the type of car you want..</p>
-      </MDBContainer>
-    </MDBJumbotron>
+    <div
+      style={{ height: 300, clear: "both", paddingTop: 120, textAlign: "center" }}
+      className="jumbotron"
+    >
+      {children}
     </div>
-  )
+  );
 }
 
-export default JumbotronPage;
+export default Jumbotron;
