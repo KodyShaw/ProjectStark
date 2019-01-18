@@ -6,7 +6,7 @@ class Nav extends React.Component {
     isOpen: false
   };
 
-  toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
+  // toggleCollapse = this.setState({ isOpen: !this.state.isOpen });
 
   render() {
     return (
