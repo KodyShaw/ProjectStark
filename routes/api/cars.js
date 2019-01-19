@@ -19,9 +19,9 @@ router.get('/locations', (request, response) => {
     //lat/long/model/make --done
     //lat/long/make/year --done
     //lat/long/used/make --done
-    //lat/long/used/model --work 
+    //lat/long/used/model --done
     //lat/long/used/year --done
-    //lat/long/used/model/year --work
+    //lat/long/used/model/year --done
     //lat/long/used/model/make --work
     //lat/long/used/make/year --work
     //lat/long/used/make/model/year --work
@@ -81,6 +81,68 @@ router.get('/locations', (request, response) => {
             }
         });
 
+    } else if ((reqQuery.lat && reqQuery.long) && reqQuery.used && reqQuery.model && reqQuery.year) {
+        function usedCheckReverse(cars) {
+            if (cars === true) {
+                return 'used'
+            } else {
+                return 'new'
+            }
+        }
+        Instance.marketCheckSearch.get('', {
+            params: {
+                latitude: reqQuery.lat,
+                longitude: reqQuery.long,
+                car_type: usedCheckReverse(reqQuery.used),
+                model: reqQuery.model,
+                year: reqQuery.year
+            }
+        }).then(res => {
+
+            console.log(res.request._redirectable._options.path);
+
+            const cars = res.data.listings
+
+            console.log(`Length of cars: ${cars.length}`);
+
+            let marketcheckData = [];
+
+            //parseing for loop
+            for (let i = 0; i < cars.length; i++) {
+                marketcheckData.unshift({
+
+                    'name': cars[i].heading,
+                    'price': cars[i].price,
+                    'miles': cars[i].miles,
+                    'msrp': cars[i].msrp,
+                    'used': usedCheck(cars[i].inventory_type),
+                    'media': cars[i].media,
+                    'dealer': cars[i].dealer,
+                    'build': cars[i].build
+
+                })
+            }
+
+            // console.log(marketcheckData[0]);
+
+            function usedCheck(cars) {
+                if (cars === 'used') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            response.json(marketcheckData);
+        }).catch(err => {
+            console.log("Back-end API Call Error");
+            if (!err.response) {
+                console.log(err);
+            } else {
+                console.log(`Status code: ${err.response.status}`);
+                console.log(`API Message: ${err.response.message}`);
+            }
+        });
     } else if ((reqQuery.lat && reqQuery.long) && reqQuery.used && reqQuery.model) {
         function usedCheckReverse(cars) {
             if (cars === true) {
