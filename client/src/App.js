@@ -6,7 +6,7 @@ import Nav from './components/Nav';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NoMatch from './components/Pages/NoMatch';
 import Home from './components/Pages/Home';
-import SearchResults from './components/SearchResults'
+import SearchResults from './components/SearchResults';
 
 
 
