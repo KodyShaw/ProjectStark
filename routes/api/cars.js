@@ -12,8 +12,17 @@ router.get('/locations', (request, response) => {
 
     //lat/long --done
     //lat/long/used --done 
-    //lat/long/make --work
-    //
+    //lat/long/make --done
+    //lat/long/model --work
+    //lat/long/year --work 
+    //lat/long/used/make --done
+    //lat/long/used/model --work 
+    //lat/long/used/year --work
+    //lat/long/used/make/model --work
+    //lat/long/used/make/year --work
+    //lat/long/used/make/model/year --work
+    //lat/long/used/model/year --work
+    //lat/long/model/year --work
 
     if (reqQuery.zip) {
         //if zip exists run this
@@ -191,6 +200,60 @@ router.get('/locations', (request, response) => {
             }
         });
 
+    } else if ((reqQuery.lat && reqQuery.long) && reqQuery.make) {
+        //else if only lat and long and make exist then run this
+        Instance.marketCheckSearch.get('', {
+            params: {
+                latitude: reqQuery.lat,
+                longitude: reqQuery.long,
+                make: reqQuery.make
+            }
+        }).then(res => {
+
+            console.log(res.request._redirectable._options.path);
+
+            const cars = res.data.listings
+
+            console.log(`Length of cars: ${cars.length}`);
+
+            let marketcheckData = [];
+
+            //parseing for loop
+            for (let i = 0; i < cars.length; i++) {
+                marketcheckData.unshift({
+
+                    'name': cars[i].heading,
+                    'price': cars[i].price,
+                    'miles': cars[i].miles,
+                    'msrp': cars[i].msrp,
+                    'used': usedCheck(cars[i].inventory_type),
+                    'media': cars[i].media,
+                    'dealer': cars[i].dealer,
+                    'build': cars[i].build
+
+                })
+            }
+
+            // console.log(marketcheckData[0]);
+
+            function usedCheck(cars) {
+                if (cars === 'used') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            response.json(marketcheckData);
+        }).catch(err => {
+            console.log("Back-end API Call Error");
+            if (!err.response) {
+                console.log(err);
+            } else {
+                console.log(`Status code: ${err.response.status}`);
+                console.log(`API Message: ${err.response.message}`);
+            }
+        });
     } else if (reqQuery.lat && reqQuery.long) {
         //else if only lat and long exist then run this
         Instance.marketCheckSearch.get('', {
@@ -242,6 +305,7 @@ router.get('/locations', (request, response) => {
             } else {
                 console.log(`Status code: ${err.response.status}`);
                 console.log(`API Message: ${err.response.message}`);
+                console.log(err.response.data)
             }
         });
     }
