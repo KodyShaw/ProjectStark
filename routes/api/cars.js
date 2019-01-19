@@ -15,9 +15,9 @@ router.get('/locations', (request, response) => {
     //lat/long/make --done
     //lat/long/model --done
     //lat/long/year --done
-    //lat/long/model/year --work
+    //lat/long/model/year --done
     //lat/long/model/make --done
-    //lat/long/make/year --work
+    //lat/long/make/year --done
     //lat/long/used/make --done
     //lat/long/used/model --work 
     //lat/long/used/year --done
@@ -265,6 +265,61 @@ router.get('/locations', (request, response) => {
                 latitude: reqQuery.lat,
                 longitude: reqQuery.long,
                 model: reqQuery.model,
+                make: reqQuery.make
+            }
+        }).then(res => {
+
+            console.log(res.request._redirectable._options.path);
+
+            const cars = res.data.listings
+
+            console.log(`Length of cars: ${cars.length}`);
+
+            let marketcheckData = [];
+
+            //parseing for loop
+            for (let i = 0; i < cars.length; i++) {
+                marketcheckData.unshift({
+
+                    'name': cars[i].heading,
+                    'price': cars[i].price,
+                    'miles': cars[i].miles,
+                    'msrp': cars[i].msrp,
+                    'used': usedCheck(cars[i].inventory_type),
+                    'media': cars[i].media,
+                    'dealer': cars[i].dealer,
+                    'build': cars[i].build
+
+                })
+            }
+
+            // console.log(marketcheckData[0]);
+
+            function usedCheck(cars) {
+                if (cars === 'used') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            response.json(marketcheckData);
+        }).catch(err => {
+            console.log("Back-end API Call Error");
+            if (!err.response) {
+                console.log(err);
+            } else {
+                console.log(`Status code: ${err.response.status}`);
+                console.log(`API Message: ${err.response.message}`);
+            }
+        });
+    } else if ((reqQuery.lat && reqQuery.long) && reqQuery.make && reqQuery.year) {
+        //else if only lat and long and model and make exist then run this
+        Instance.marketCheckSearch.get('', {
+            params: {
+                latitude: reqQuery.lat,
+                longitude: reqQuery.long,
+                year: reqQuery.year,
                 make: reqQuery.make
             }
         }).then(res => {
