@@ -339,6 +339,131 @@ router.get('/locations', (request, response) => {
                 console.log(`API Message: ${err.response.message}`);
             }
         });
+    } else if ((reqQuery.lat && reqQuery.long) && reqQuery.used && reqQuery.radius && reqQuery.year) {
+        {
+            function usedCheckReverse(cars) {
+                if (cars === true) {
+                    return 'used'
+                } else {
+                    return 'new'
+                }
+            }
+            Instance.marketCheckSearch.get('', {
+                params: {
+                    latitude: reqQuery.lat,
+                    longitude: reqQuery.long,
+                    car_type: usedCheckReverse(reqQuery.used),
+                    radius: reqQuery.radius,
+                    year: reqQuery.year
+                }
+            }).then(res => {
+    
+                console.log(res.request._redirectable._options.path);
+    
+                const cars = res.data.listings
+    
+                console.log(`Length of cars: ${cars.length}`);
+    
+                let marketcheckData = [];
+    
+                //parseing for loop
+                for (let i = 0; i < cars.length; i++) {
+                    marketcheckData.unshift({
+    
+                        'name': cars[i].heading,
+                        'price': cars[i].price,
+                        'miles': cars[i].miles,
+                        'msrp': cars[i].msrp,
+                        'used': usedCheck(cars[i].inventory_type),
+                        'media': cars[i].media,
+                        'dealer': cars[i].dealer,
+                        'build': cars[i].build
+    
+                    })
+                }
+    
+                // console.log(marketcheckData[0]);
+    
+                function usedCheck(cars) {
+                    if (cars === 'used') {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+    
+                response.json(marketcheckData);
+            }).catch(err => {
+                console.log("Back-end API Call Error");
+                if (!err.response) {
+                    console.log(err);
+                } else {
+                    console.log(`Status code: ${err.response.status}`);
+                    console.log(`API Message: ${err.response.message}`);
+                }
+            });
+        }
+    } else if ((reqQuery.lat && reqQuery.long) && reqQuery.used && reqQuery.radius) {
+        function usedCheckReverse(cars) {
+            if (cars === true) {
+                return 'used'
+            } else {
+                return 'new'
+            }
+        }
+        Instance.marketCheckSearch.get('', {
+            params: {
+                latitude: reqQuery.lat,
+                longitude: reqQuery.long,
+                car_type: usedCheckReverse(reqQuery.used),
+                radius: reqQuery.radius
+            }
+        }).then(res => {
+
+            console.log(res.request._redirectable._options.path);
+
+            const cars = res.data.listings
+
+            console.log(`Length of cars: ${cars.length}`);
+
+            let marketcheckData = [];
+
+            //parseing for loop
+            for (let i = 0; i < cars.length; i++) {
+                marketcheckData.unshift({
+
+                    'name': cars[i].heading,
+                    'price': cars[i].price,
+                    'miles': cars[i].miles,
+                    'msrp': cars[i].msrp,
+                    'used': usedCheck(cars[i].inventory_type),
+                    'media': cars[i].media,
+                    'dealer': cars[i].dealer,
+                    'build': cars[i].build
+
+                })
+            }
+
+            // console.log(marketcheckData[0]);
+
+            function usedCheck(cars) {
+                if (cars === 'used') {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            response.json(marketcheckData);
+        }).catch(err => {
+            console.log("Back-end API Call Error");
+            if (!err.response) {
+                console.log(err);
+            } else {
+                console.log(`Status code: ${err.response.status}`);
+                console.log(`API Message: ${err.response.message}`);
+            }
+        });
     } else if ((reqQuery.lat && reqQuery.long) && reqQuery.used && reqQuery.model) {
         function usedCheckReverse(cars) {
             if (cars === true) {
@@ -475,67 +600,6 @@ router.get('/locations', (request, response) => {
                 longitude: reqQuery.long,
                 car_type: usedCheckReverse(reqQuery.used),
                 make: reqQuery.make
-            }
-        }).then(res => {
-
-            console.log(res.request._redirectable._options.path);
-
-            const cars = res.data.listings
-
-            console.log(`Length of cars: ${cars.length}`);
-
-            let marketcheckData = [];
-
-            //parseing for loop
-            for (let i = 0; i < cars.length; i++) {
-                marketcheckData.unshift({
-
-                    'name': cars[i].heading,
-                    'price': cars[i].price,
-                    'miles': cars[i].miles,
-                    'msrp': cars[i].msrp,
-                    'used': usedCheck(cars[i].inventory_type),
-                    'media': cars[i].media,
-                    'dealer': cars[i].dealer,
-                    'build': cars[i].build
-
-                })
-            }
-
-            // console.log(marketcheckData[0]);
-
-            function usedCheck(cars) {
-                if (cars === 'used') {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
-            response.json(marketcheckData);
-        }).catch(err => {
-            console.log("Back-end API Call Error");
-            if (!err.response) {
-                console.log(err);
-            } else {
-                console.log(`Status code: ${err.response.status}`);
-                console.log(`API Message: ${err.response.message}`);
-            }
-        });
-    } else if ((reqQuery.lat && reqQuery.long) && reqQuery.used && reqQuery.radius) {
-        function usedCheckReverse(cars) {
-            if (cars === true) {
-                return 'used'
-            } else {
-                return 'new'
-            }
-        }
-        Instance.marketCheckSearch.get('', {
-            params: {
-                latitude: reqQuery.lat,
-                longitude: reqQuery.long,
-                car_type: usedCheckReverse(reqQuery.used),
-                radius: reqQuery.radius
             }
         }).then(res => {
 
@@ -749,8 +813,8 @@ router.get('/locations', (request, response) => {
             }
         });
     } else if ((reqQuery.lat && reqQuery.long) && reqQuery.radius && reqQuery.make) {
-         //else if only lat and long and make exist then run this
-         Instance.marketCheckSearch.get('', {
+        //else if only lat and long and make exist then run this
+        Instance.marketCheckSearch.get('', {
             params: {
                 latitude: reqQuery.lat,
                 longitude: reqQuery.long,
