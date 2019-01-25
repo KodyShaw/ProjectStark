@@ -1,0 +1,151 @@
+Cars Key ---------------------------------
+
+    // No Used ---------------------------
+    /// No Radius ------------------------
+    //// No Model ------------------------
+    ///// No Make ------------------------
+    ////// No Year -----------------------
+
+    //lat/long --done -v2- 
+
+    ////// Year --------------------------
+
+    //lat/long/year --done -v2-
+
+    ///// Make ---------------------------
+    /////- No Year -----------------------
+
+    //lat/long/make --done -v2-
+
+    /////- Year --------------------------
+
+    //lat/long/make/year --done -v2-
+
+    //// Model ---------------------------
+    ////- No Year ------------------------
+    ////-- No Make -----------------------
+
+    //lat/long/model --done -v2-
+
+    ////-- Make --------------------------
+
+    //lat/long/model/make --done -v2-
+
+    ////- Year ---------------------------
+
+    //lat/long/model/year --done -v2-
+
+    /// Radius ---------------------------
+    ///- No Year -------------------------
+    ///-- No Make ------------------------
+    ///--- No Model ----------------------
+
+    //lat/long/radius --done -v2-
+
+    ///--- Model -------------------------
+
+    //lat/long/radius/model --done -v2-
+
+    ///-- Make ---------------------------
+    ///--= No Model ----------------------
+
+    //lat/long/radius/make --done -v2-
+
+    ///--= Model -------------------------
+
+    //lat/long/radius/model/make --done -v2-
+
+    ///- Year ----------------------------
+    ///-= No Model -----------------------
+    ///-== No Make -----------------------
+
+    //lat/long/radius/year --done -v2-
+
+    ///-== Make --------------------------
+
+    //lat/long/radius/make/year --done -v2-
+
+    ///-= Model --------------------------
+
+    //lat/long/radius/model/year --done -v2-
+
+    // Used ------------------------------
+    //. No Radius ------------------------
+    //.. No Model ------------------------
+    //... No Make ------------------------
+    //.... No Year -----------------------
+
+    //lat/long/used --done -v2
+
+    //.... Year --------------------------
+
+    //lat/long/used/year --done -v2
+
+    //... Make ---------------------------
+    //...- No Year -----------------------
+
+    //lat/long/used/make --done -v2
+
+    //...- Year
+
+    //lat/long/used/make/year --done -v2
+
+    //.. Model ---------------------------
+    //..- No Year ------------------------
+    //..-- No Make -----------------------
+
+    //lat/long/used/model --done -v2
+
+    //..-- Make --------------------------
+
+    //lat/long/used/model/make --done -v2
+
+    //..- Year ---------------------------
+    //..-= No make -----------------------
+
+    //lat/long/used/model/year --done -v2
+
+    //..-= Make --------------------------
+
+    //lat/long/used/make/model/year --done -v2
+
+    //. Radius ---------------------------
+    //.- No Model ------------------------
+    //.-- No Make ------------------------
+    //.--= No Year -----------------------
+
+    //lat/long/used/radius --done -v2
+
+    //.--= Year --------------------------
+
+    //lat/long/used/radius/year --done -v2
+
+    //.-- Make ---------------------------
+    //.--; No Year -----------------------
+
+    //lat/long/used/radius/make --done -v2
+
+    //.--; Year
+
+    //lat/long/used/radius/make/year --done -v2
+
+    //.- Model ---------------------------
+    //.-= No Make ------------------------
+    //.-== No Year -----------------------
+
+    //lat/long/used/radius/model --done -v2
+
+    //.== Year ---------------------------
+
+    //lat/long/used/radius/model/year --done -v2
+
+    //.-= Make ---------------------------
+    //.=; No Year ------------------------
+
+    //lat/long/used/radius/model/make --done -v2
+
+    //.-=; Year --------------------------
+
+    //lat/long/used/radius/make/model/year --done -v2-
+    
+Cars Key End ------------------------------
