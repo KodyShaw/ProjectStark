@@ -6,7 +6,7 @@ const axios = require('axios');
 router.get('/locations', (request, response) => {
     const reqQuery = request.query;
     console.log(reqQuery);
-    
+
     if ((reqQuery.lat && reqQuery.long)) {
         if (reqQuery.used === undefined) {
             // No Used
@@ -18,26 +18,26 @@ router.get('/locations', (request, response) => {
                         ///// No Make
                         if (reqQuery.year === undefined) {
                             ////// No Year
-    
+
                             //lat/long
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
                                     longitude: reqQuery.long,
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
 
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -51,9 +51,9 @@ router.get('/locations', (request, response) => {
                             });
                         } else {
                             ////// Year
-    
+
                             ///lat/long/year
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -61,19 +61,19 @@ router.get('/locations', (request, response) => {
                                     year: reqQuery.year
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
 
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-        
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -89,9 +89,9 @@ router.get('/locations', (request, response) => {
                         ///// Make
                         if (reqQuery.year === undefined) {
                             /////- No Year
-    
+
                             //lat/long/make
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -99,19 +99,19 @@ router.get('/locations', (request, response) => {
                                     make: reqQuery.make
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
-                                
+
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-        
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -124,9 +124,9 @@ router.get('/locations', (request, response) => {
                             });
                         } else {
                             /////- Year
-    
+
                             //lat/long/make/year
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -135,19 +135,19 @@ router.get('/locations', (request, response) => {
                                     make: reqQuery.make
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
 
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-        
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -166,9 +166,9 @@ router.get('/locations', (request, response) => {
                         ////- No Year
                         if (reqQuery.make === undefined) {
                             ////-- No Make
-    
+
                             //lat/long/model
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -176,20 +176,20 @@ router.get('/locations', (request, response) => {
                                     model: reqQuery.model
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
-    
+
                                 //parseing for loop
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-        
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -202,9 +202,9 @@ router.get('/locations', (request, response) => {
                             });
                         } else {
                             ////-- Make
-    
+
                             //lat/long/model/make
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -213,20 +213,20 @@ router.get('/locations', (request, response) => {
                                     make: reqQuery.make
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
-    
+
                                 //parseing for loop
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-        
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -240,9 +240,9 @@ router.get('/locations', (request, response) => {
                         }
                     } else {
                         ////- Year
-    
+
                         //lat/long/model/year
-    
+
                         Instance.marketCheckSearch.get('', {
                             params: {
                                 latitude: reqQuery.lat,
@@ -251,20 +251,20 @@ router.get('/locations', (request, response) => {
                                 year: reqQuery.year
                             }
                         }).then(res => {
-    
+
                             console.log(res.request._redirectable._options.path);
-    
+
                             const cars = res.data.listings
-    
+
                             console.log(`Length of cars: ${cars.length}`);
-    
+
                             let marketcheckData = [];
-    
+
                             //parseing for loop
                             marketcheckParse(cars, marketcheckData);
-    
+
                             // console.log(marketcheckData[0]);
-        
+
                             response.json(marketcheckData);
                         }).catch(err => {
                             console.log("Back-end API Call Error");
@@ -285,9 +285,9 @@ router.get('/locations', (request, response) => {
                         ///-- No Make
                         if (reqQuery.model === undefined) {
                             ///--- No Model
-    
+
                             //lat/long/radius
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -295,19 +295,19 @@ router.get('/locations', (request, response) => {
                                     radius: reqQuery.radius
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
 
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-        
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -320,9 +320,9 @@ router.get('/locations', (request, response) => {
                             });
                         } else {
                             ///--- Model
-    
+
                             //lat/long/radius/model
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -331,20 +331,20 @@ router.get('/locations', (request, response) => {
                                     model: reqQuery.model
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
-    
+
                                 //parseing for loop
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-        
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -360,9 +360,9 @@ router.get('/locations', (request, response) => {
                         ///-- Make
                         if (reqQuery.model === undefined) {
                             ///--= No Model
-    
+
                             //lat/long/radius/make
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -371,20 +371,20 @@ router.get('/locations', (request, response) => {
                                     make: reqQuery.make
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
-    
+
                                 //parseing for loop
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-        
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -397,9 +397,9 @@ router.get('/locations', (request, response) => {
                             });
                         } else {
                             ///--= Model
-    
+
                             //lat/long/radius/model/make 
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -409,20 +409,20 @@ router.get('/locations', (request, response) => {
                                     model: reqQuery.model
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
-    
+
                                 //parseing for loop
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-    
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -441,9 +441,9 @@ router.get('/locations', (request, response) => {
                         ///-= No Model
                         if (reqQuery.make === undefined) {
                             ///-== No Make
-    
+
                             //lat/long/radius/year
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -452,20 +452,20 @@ router.get('/locations', (request, response) => {
                                     year: reqQuery.year
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
-    
+
                                 //parseing for loop
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-    
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -478,9 +478,9 @@ router.get('/locations', (request, response) => {
                             });
                         } else {
                             ///-== Make
-    
+
                             //lat/long/radius/make/year
-    
+
                             Instance.marketCheckSearch.get('', {
                                 params: {
                                     latitude: reqQuery.lat,
@@ -490,20 +490,20 @@ router.get('/locations', (request, response) => {
                                     year: reqQuery.year
                                 }
                             }).then(res => {
-    
+
                                 console.log(res.request._redirectable._options.path);
-    
+
                                 const cars = res.data.listings
-    
+
                                 console.log(`Length of cars: ${cars.length}`);
-    
+
                                 let marketcheckData = [];
-    
+
                                 //parseing for loop
                                 marketcheckParse(cars, marketcheckData);
-    
+
                                 // console.log(marketcheckData[0]);
-    
+
                                 response.json(marketcheckData);
                             }).catch(err => {
                                 console.log("Back-end API Call Error");
@@ -518,9 +518,9 @@ router.get('/locations', (request, response) => {
                     }
                     else {
                         ///-= Model
-    
+
                         //lat/long/radius/model/year
-    
+
                         Instance.marketCheckSearch.get('', {
                             params: {
                                 latitude: reqQuery.lat,
@@ -530,20 +530,20 @@ router.get('/locations', (request, response) => {
                                 year: reqQuery.year
                             }
                         }).then(res => {
-    
+
                             console.log(res.request._redirectable._options.path);
-    
+
                             const cars = res.data.listings
-    
+
                             console.log(`Length of cars: ${cars.length}`);
-    
+
                             let marketcheckData = [];
-    
+
                             //parseing for loop
                             marketcheckParse(cars, marketcheckData);
-    
+
                             // console.log(marketcheckData[0]);
-    
+
                             response.json(marketcheckData);
                         }).catch(err => {
                             console.log("Back-end API Call Error");
@@ -569,9 +569,9 @@ router.get('/locations', (request, response) => {
                             //... No Make
                             if (reqQuery.year === undefined) {
                                 //.... No Year
-    
+
                                 //lat/long/used
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -579,20 +579,20 @@ router.get('/locations', (request, response) => {
                                         car_type: usedCheckReverse(reqQuery.used),
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-    
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -605,9 +605,9 @@ router.get('/locations', (request, response) => {
                                 });
                             } else {
                                 //.... Year
-    
+
                                 //lat/long/used/year
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -616,20 +616,20 @@ router.get('/locations', (request, response) => {
                                         year: reqQuery.year
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-    
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -645,9 +645,9 @@ router.get('/locations', (request, response) => {
                             //... Make
                             if (reqQuery.year === undefined) {
                                 //...- No Year
-    
+
                                 //lat/long/used/make
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -656,20 +656,20 @@ router.get('/locations', (request, response) => {
                                         make: reqQuery.make
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -682,9 +682,9 @@ router.get('/locations', (request, response) => {
                                 });
                             } else {
                                 //...- Year
-    
+
                                 //lat/long/used/make/year
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -694,20 +694,20 @@ router.get('/locations', (request, response) => {
                                         make: reqQuery.make
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -726,9 +726,9 @@ router.get('/locations', (request, response) => {
                             //..- No Year
                             if (reqQuery.make === undefined) {
                                 //..-- No Make
-    
+
                                 //lat/long/used/model
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -737,20 +737,20 @@ router.get('/locations', (request, response) => {
                                         model: reqQuery.model
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -763,9 +763,9 @@ router.get('/locations', (request, response) => {
                                 });
                             } else {
                                 //..-- Make
-    
+
                                 //lat/long/used/model/make
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -775,20 +775,20 @@ router.get('/locations', (request, response) => {
                                         make: reqQuery.make
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -804,9 +804,9 @@ router.get('/locations', (request, response) => {
                             //..- Year
                             if (reqQuery.make === undefined) {
                                 //..-= No make
-    
+
                                 //lat/long/used/model/year
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -816,20 +816,20 @@ router.get('/locations', (request, response) => {
                                         year: reqQuery.year
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -842,9 +842,9 @@ router.get('/locations', (request, response) => {
                                 });
                             } else {
                                 //..-= Make
-    
+
                                 //lat/long/used/make/model/year
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -855,20 +855,20 @@ router.get('/locations', (request, response) => {
                                         year: reqQuery.year
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -890,9 +890,9 @@ router.get('/locations', (request, response) => {
                             //.-- No Make
                             if (reqQuery.year === undefined) {
                                 //.--= No Year
-    
+
                                 //lat/long/used/radius
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -901,20 +901,20 @@ router.get('/locations', (request, response) => {
                                         radius: reqQuery.radius
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -927,9 +927,9 @@ router.get('/locations', (request, response) => {
                                 });
                             } else {
                                 //.--= Year
-    
+
                                 //lat/long/used/radius/year
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -939,20 +939,20 @@ router.get('/locations', (request, response) => {
                                         year: reqQuery.year
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -968,9 +968,9 @@ router.get('/locations', (request, response) => {
                             //.-- Make
                             if (reqQuery.year === undefined) {
                                 //.--; No Year
-    
+
                                 //lat/long/used/radius/make
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -980,20 +980,20 @@ router.get('/locations', (request, response) => {
                                         make: reqQuery.make
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -1006,9 +1006,9 @@ router.get('/locations', (request, response) => {
                                 });
                             } else {
                                 //.--; Year
-    
+
                                 //lat/long/used/radius/make/year
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -1019,20 +1019,20 @@ router.get('/locations', (request, response) => {
                                         make: reqQuery.make
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -1051,9 +1051,9 @@ router.get('/locations', (request, response) => {
                             //.-= No Make
                             if (reqQuery.year === undefined) {
                                 //.-== No Year
-    
+
                                 //lat/long/used/radius/model
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -1063,20 +1063,20 @@ router.get('/locations', (request, response) => {
                                         model: reqQuery.model
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -1089,9 +1089,9 @@ router.get('/locations', (request, response) => {
                                 });
                             } else {
                                 //.-== Year
-    
+
                                 //lat/long/used/radius/model/year
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -1102,20 +1102,20 @@ router.get('/locations', (request, response) => {
                                         model: reqQuery.model
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -1131,9 +1131,9 @@ router.get('/locations', (request, response) => {
                             //.-= Make
                             if (reqQuery.year === undefined) {
                                 //.=; No Year
-    
+
                                 //lat/long/used/radius/model/make
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -1144,20 +1144,20 @@ router.get('/locations', (request, response) => {
                                         model: reqQuery.model
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -1170,9 +1170,9 @@ router.get('/locations', (request, response) => {
                                 });
                             } else {
                                 //.=; Year
-    
+
                                 //lat/long/used/radius/make/model/year
-    
+
                                 Instance.marketCheckSearch.get('', {
                                     params: {
                                         latitude: reqQuery.lat,
@@ -1184,20 +1184,20 @@ router.get('/locations', (request, response) => {
                                         year: reqQuery.year
                                     }
                                 }).then(res => {
-    
+
                                     console.log(res.request._redirectable._options.path);
-    
+
                                     const cars = res.data.listings
-    
+
                                     console.log(`Length of cars: ${cars.length}`);
-    
+
                                     let marketcheckData = [];
-    
+
                                     //parseing for loop
                                     marketcheckParse(cars, marketcheckData);
-    
+
                                     // console.log(marketcheckData[0]);
-        
+
                                     response.json(marketcheckData);
                                 }).catch(err => {
                                     console.log("Back-end API Call Error");
@@ -1213,15 +1213,24 @@ router.get('/locations', (request, response) => {
                     }
                 }
             } else {
+                response.statusMessage = 'Used params must be true or false'
+                response.status(501).end()
                 //code error message saying used must be true or false
             }
         }
     } else if (reqQuery.lat) {
+        response.statusMessage = 'Request must include lat and long params'
+        response.status(501).end()
         //code error message saying there must be both lat and long.
     } else if (reqQuery.long) {
+        response.statusMessage = 'Request must include lat and long params'
+        response.status(501).end()
         //code error message saying there must be both lat and long.
+    } else {
+        response.statusMessage = 'Error: ID:10t. Endpoint doesnt exist'
+        response.status(418).end()
     }
-    
+
     function usedCheckReverse(cars) {
         if (cars === true) {
             return 'used'
@@ -1229,7 +1238,7 @@ router.get('/locations', (request, response) => {
             return 'new'
         }
     }
-    
+
     function usedCheck(cars) {
         if (cars === 'used') {
             return true;

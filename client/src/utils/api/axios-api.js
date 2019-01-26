@@ -8,9 +8,8 @@ const API = {
             if (!err.response) {
                 console.log({ err });
             } else {
-                console.log(`Status code: ${err.response.status}`)
-                console.log(`API Message: ${err.message}`);
-                console.log({err})
+                console.log(`Status code: ${err.response.status}`);
+                console.log(`API Message: ${err.request.statusText}`);
             }
         });
     }
