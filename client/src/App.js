@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   latLong() {
-    API.axiosGet(Instance.locationAPI, `locations?thing=thing`, (res) => {
+    API.axiosGet(Instance.locationAPI, `locations?lat=33.3520579&long=-111.7912647&used=true&make=ford&model=F-250&year=2019&radius=100`, (res) => {
 
       console.log(`Frontend response:`)
       console.log(res);
