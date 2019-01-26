@@ -17,13 +17,14 @@ class App extends Component {
     zipcode: 85210,
     lat: 0,
     long: 0,
+    model: "f-250"
   }
 
   componentDidMount() {
     this.setLocation();
     this.latLong();
     // this.zipcode();
-    
+
   }
 
   setLocation() {
@@ -38,7 +39,14 @@ class App extends Component {
   }
 
   latLong() {
-    API.axiosGet(Instance.locationAPI, `locations?lat=33.3520579&long=-111.7912647&used=true&make=ford&model=F-250&year=2019&radius=100`, (res) => {
+    API.axiosGet(Instance.locationAPI, '', {
+      params: {
+        model: this.state.model,
+        lat: 33.3520579,
+        long: -111.7912647,
+        used: false
+      }
+   }, (res) => {
 
       console.log(`Frontend response:`)
       console.log(res);
