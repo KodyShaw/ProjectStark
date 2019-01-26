@@ -1213,13 +1213,18 @@ router.get('/locations', (request, response) => {
                     }
                 }
             } else {
+                response.status(501).send({error: 'Used params must be true or false'})
                 //code error message saying used must be true or false
             }
         }
     } else if (reqQuery.lat) {
+        response.status(501).send({error: 'Request must include lat and long params'})
         //code error message saying there must be both lat and long.
     } else if (reqQuery.long) {
+        response.status(501).send({error: 'Request must include lat and long params'})
         //code error message saying there must be both lat and long.
+    } else {
+        response.status(418).send({error: 'Error: ID:10t. Endpoint doesnt exist'})
     }
     
     function usedCheckReverse(cars) {
