@@ -1,7 +1,8 @@
 //API to be used with the axios call functions.
 const API = {
-    axiosGet: (instance, query, callbackFunction) => {
-        instance.get(query).then(res => {
+    axiosGet: (instance, query, options, callbackFunction) => {
+        instance.get(query, options).then(res => {
+            console.log(options)
             callbackFunction(res.data);
         }).catch(err => {
             console.log("Front-end API Call Error");

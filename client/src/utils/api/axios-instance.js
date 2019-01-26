@@ -4,7 +4,7 @@ import axios from "axios";
 //headers might change slightly based om the API used
 export default {
     locationAPI: axios.create({
-        baseURL: `/api/v1/cars/`,
+        baseURL: `/api/v1/cars/locations?`,
         headers: {
             'Accept': 'aplication/json',
             'Content-Type': 'aplication/json',
