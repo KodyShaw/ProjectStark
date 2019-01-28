@@ -35,6 +35,7 @@ class App extends Component {
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
+    
   }
 
   latLong() {

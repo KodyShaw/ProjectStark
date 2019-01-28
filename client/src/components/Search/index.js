@@ -23,7 +23,7 @@ class Search extends React.Component {
     event.preventDefault();
     this.setState({ redirect: true });
     // make API call 
-    API.axiosGet(Instance.baseAPI, "cars/locations?lat=33&long=-111", res => {
+    API.axiosGet(Instance.locationAPI, "lat=33&long=-111", res => {
       console.log(res)
     })
 
