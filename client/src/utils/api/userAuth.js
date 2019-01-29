@@ -4,23 +4,23 @@ import axios from "axios";
 //headers might change slightly based om the API used
 export default {
     signUp : function(userInfo){
-        return axios.post("/v1/signup", userInfo)
+        return axios.post("/api/v1/users/signup", userInfo)
       },
     
       signIn: function (userInfo){
-        return axios.post("/v1/signin", userInfo)
+        return axios.post("/api/v1/users/signin", userInfo)
       },
     
       checkAuth: function (){
-        return axios.get("/v1/protected");
+        return axios.get("/api/v1/users/protected");
     
       },
     
       logout: function (){
-        return axios.get("/v1/logout")
+        return axios.get("/api/v1/users/logout")
       },
 
       getData: function (token){
-          return axios.post("/v1/user_data", {userToken: token})
+          return axios.post("/api/v1/users/user_data", {userToken: token})
       }
 }

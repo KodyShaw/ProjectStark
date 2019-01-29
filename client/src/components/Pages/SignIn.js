@@ -38,7 +38,7 @@ class SignUpIn extends Component {
             password: this.state.password
         }
 
-        userAuth.signUp(obj).then(res => this.props.history.push("/"))
+        userAuth.signUp(obj).then(res => this.props.history.push("/signin"))
     }
 
     handleLogin = () => {
@@ -59,7 +59,7 @@ class SignUpIn extends Component {
 
             
 
-            this.props.history.push("/home")
+            this.props.history.push("/")
         })
 
     }
@@ -71,7 +71,7 @@ class SignUpIn extends Component {
         axios.defaults.headers.common['authorization'] = "";
         localStorage.removeItem("userToken")
   
-        this.props.history.push("/")
+        this.props.history.push("/signin")
   
   
     }
