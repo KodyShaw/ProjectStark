@@ -3,6 +3,7 @@ import { Col, FormInline, Button } from "mdbreact";
 import "./style.css";
 import { Redirect } from "react-router";
 import API from "../../utils/api/axios-api"
+import Instance from "../../utils/api/axios-instance"
 
 class Search extends React.Component {
   state = {
@@ -22,7 +23,9 @@ class Search extends React.Component {
     event.preventDefault();
     this.setState({ redirect: true });
     // make API call 
-    console.log(API.axiosGet())
+    API.axiosGet(Instance.locationAPI, "lat=33&long=-111", res => {
+      console.log(res)
+    })
 
   }
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button, Card, CardBody, CardImage, CardTitle, CardText, Col } from 'mdbreact';
+import API from "../../utils/api/axios-api"
+
 
 class SearchCard extends React.Component {
   render() {
